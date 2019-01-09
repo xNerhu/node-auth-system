@@ -75,6 +75,9 @@ class Builder {
         '@shared': '~/shared/',
         '~': '~/',
       },
+      log: {
+        showBundledFiles: false,
+      },
     };
   }
 
@@ -134,6 +137,7 @@ Sparky.task('client', async () => {
       fallback: 'index.html',
     },
     plugins: [
+      [SassPlugin(), CSSPlugin()],
       CopyPlugin({
         files: ['*.woff2', '*.png', '*.svg', '*.jpg', '*.jpeg', '*.tff'],
         dest: 'assets',
