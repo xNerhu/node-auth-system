@@ -109,13 +109,7 @@ class Builder {
   }
 }
 
-Sparky.task('clean', async () => {
-  await Sparky.src(outputDir)
-    .clean(outputDir)
-    .exec();
-});
-
-Sparky.task('default', ['clean', 'client', 'server']);
+Sparky.task('default', ['client', 'server']);
 
 Sparky.task('server', async () => {
   await new Builder({
