@@ -1,0 +1,57 @@
+{
+  "name": "node-auth-system",
+  "version": "1.0.0",
+  "description": "An Node.js authentication system with email verification and captcha",
+  "keywords": [
+    "node",
+    "react",
+    "styled-components",
+    "fuse-box",
+    "auth",
+    "login",
+    "register",
+    "captcha",
+    "email",
+    "verification"
+  ],
+  "author": {
+    "name": "Mikołaj Palkiewicz",
+    "email": "xnerhu@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xnerhu/node-auth-system.git"
+  },
+  "homepage": "https://github.com/xnerhu/node-auth-system#readme",
+  "main": "./build/server.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV='dev' node fuse",
+    "build": "cross-env NODE_ENV='prod' node fuse",
+    "start": "node start ./build/server.js"
+  },
+  "devDependencies": {
+    "@types/body-parser": "1.17.0",
+    "@types/express": "4.16.0",
+    "@types/helmet": "0.0.42",
+    "@types/react": "16.4.14",
+    "@types/react-dom": "16.0.8",
+    "fuse-box": "3.6.0",
+    "fuse-box-typechecker": "2.11.0",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "react-hot-loader": "4.3.11",
+    "tslint": "5.12.0",
+    "tslint-config-airbnb": "5.11.1",
+    "tslint-config-prettier": "1.17.0",
+    "typescript": "3.2.2",
+    "uglify-es": "3.3.9",
+    "uglify-js": "3.4.9"
+  },
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "cross-env": "5.2.0",
+    "express": "4.16.4",
+    "helmet": "3.15.0"
+  }
+}
