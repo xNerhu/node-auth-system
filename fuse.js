@@ -37,14 +37,15 @@ class Builder {
       watchFilter,
       runWhenCompleted: false,
       devServerOptions: {},
+      plugins: [],
     },
   ) {
-    const { target, name, output } = config;
+    const { target, name, output, plugins } = config;
     this.config = config;
-    this.fuseConfig = Builder.getFuseConfig(target, name, output);
+    this.fuseConfig = Builder.getFuseConfig(target, name, output, plugins);
   }
 
-  static getFuseConfig(target, name, output = '$name.js') {
+  static getFuseConfig(target, name, output = '$name.js', plugins = []) {
     return {
       target,
       homeDir: 'src/',
@@ -55,17 +56,6 @@ class Builder {
       cache: !isProduction,
       plugins: [
         JSONPlugin(),
-        name === 'client' &&
-          CopyPlugin({
-            files: ['*.woff2', '*.png', '*.svg', '*.jpg', '*.jpeg', '*.tff'],
-            dest: target === 'server' ? 'public/assets' : 'assets',
-            resolve: 'assets',
-          }),
-        name === 'client' &&
-          WebIndexPlugin({
-            template: `src/client/resources/pages/index.html`,
-            path: './',
-          }),
         EnvPlugin({
           NODE_ENV: isProduction ? 'production' : 'development',
         }),
@@ -78,7 +68,7 @@ class Builder {
               es6: true,
             },
           }),
-      ],
+      ].concat(plugins),
       alias: {
         '@client': '~/client/',
         '@server': '~/server/',
@@ -143,5 +133,16 @@ Sparky.task('client', async () => {
     devServerOptions: {
       fallback: 'index.html',
     },
+    plugins: [
+      CopyPlugin({
+        files: ['*.woff2', '*.png', '*.svg', '*.jpg', '*.jpeg', '*.tff'],
+        dest: 'assets',
+        resolve: 'assets',
+      }),
+      WebIndexPlugin({
+        template: `src/client/resources/pages/index.html`,
+        path: './',
+      }),
+    ],
   }).init();
 });
