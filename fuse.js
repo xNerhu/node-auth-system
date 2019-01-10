@@ -8,6 +8,8 @@ const {
   JSONPlugin,
   CopyPlugin,
   WebIndexPlugin,
+  CSSPlugin,
+  SassPlugin,
 } = require('fuse-box');
 
 const isProduction = process.env.NODE_ENV === 'prod';
@@ -117,7 +119,7 @@ Sparky.task('server', async () => {
     target: 'server',
     instructions: '> [server/index.ts] +shared/**',
     runWhenCompleted: true,
-    watch: 'client/**',
+    watch: 'server/**',
   }).init();
 });
 
@@ -125,7 +127,7 @@ Sparky.task('client', async () => {
   await new Builder({
     name: 'client',
     instructions: '> client/index.tsx +shared/**',
-    watch: 'server/**',
+    watch: 'client/**',
     output: join('public', '$name.js'),
     devServerOptions: {
       fallback: 'index.html',

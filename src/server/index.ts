@@ -6,7 +6,7 @@ import * as express from 'express';
 import controllers from './controllers';
 
 const app = express();
-const PORT = 8080;
+const PORT = 3000;
 
 app.use(helmet());
 app.use(bodyParser.json());
