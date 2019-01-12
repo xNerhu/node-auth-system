@@ -11,7 +11,7 @@ export const Root = styled.div`
   box-shadow: ${shadows(3)};
 `;
 
-export const Img = styled.div`
+export const Avatar = styled.div`
   width: 196px;
   height: 196px;
   background-color: #eee;

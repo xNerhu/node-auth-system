@@ -1,10 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Root = styled.div``;
+const MAX_COLUMNS = 4;
+const CARD_WIDTH = 194;
+const PADDING = 48;
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 24px;
-  margin-top: 24px;
+const createMedia = () => {
+  const list = [];
+
+  for (let i = 2; i <= MAX_COLUMNS; i++) {
+    list.push(`
+      @media (min-width: ${CARD_WIDTH * i + PADDING * 2}px) {
+        grid-template-columns: repeat(${i}, 1fr);
+      }
+    `);
+  }
+
+  return css`
+    ${list}
+  `;
+};
+
+export const Root = styled.div`
+  width: fit-content;
+  margin: 48px auto;
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: repeat(1, 1fr);
+  ${createMedia()};
 `;

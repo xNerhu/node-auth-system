@@ -15,6 +15,9 @@ export const Root = styled.div`
 export const Title = styled.div`
   margin-left: 24px;
   font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: rgba(0, 0, 0, 0.89);
 `;
 
