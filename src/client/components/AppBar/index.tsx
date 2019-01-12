@@ -1,17 +1,25 @@
 import * as React from 'react';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
-import { Root, Title, ActionItems, ActionItem } from './styles';
+import './styles.scss';
 
-export default class AppBar extends React.Component {
+export default class Bar extends React.Component {
   render() {
     return (
-      <Root>
-        <Title>Find out new people</Title>
-        <ActionItems>
-          <ActionItem>Sign up</ActionItem>
-          <ActionItem>Log in</ActionItem>
-        </ActionItems>
-      </Root>
+      <AppBar className="appbar" position="relative" color="inherit">
+        <Toolbar>
+          <Typography
+            className="appbar-typography"
+            variant="h6"
+            color="inherit"
+          >
+            Photos
+          </Typography>
+          <Button>login</Button>
+          <Button>sign up</Button>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

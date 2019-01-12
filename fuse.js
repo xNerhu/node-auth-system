@@ -7,8 +7,10 @@ const {
   QuantumPlugin,
   Sparky,
   JSONPlugin,
-  CopyPlugin,
   WebIndexPlugin,
+  CSSPlugin,
+  CSSResourcePlugin,
+  SassPlugin,
 } = require('fuse-box');
 
 const isProduction = process.env.NODE_ENV === 'prod';
@@ -137,11 +139,14 @@ Sparky.task('client', async () => {
       fallback: 'index.html',
     },
     plugins: [
-      CopyPlugin({
-        files: ['*.woff2', '*.png', '*.svg', '*.jpg', '*.jpeg', '*.tff'],
-        dest: 'assets',
-        resolve: 'assets',
-      }),
+      [
+        SassPlugin(),
+        CSSResourcePlugin({
+          dist: `build/public/assets`,
+          resolve: f => `/assets/${f}`,
+        }),
+        CSSPlugin(),
+      ],
       WebIndexPlugin({
         template: `src/client/assets/pages/index.html`,
         path: './',

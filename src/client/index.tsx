@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { render as RenderDOM } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { injectGlobal } from 'styled-components';
 
 import App from './components/App';
-import { Style } from './styles';
-
-injectGlobal`${Style}`;
+import './styles.scss';
 
 const render = (AppComponent: any) => {
   RenderDOM(
