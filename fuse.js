@@ -1,4 +1,5 @@
 const { join } = require('path');
+const dotenv = require('dotenv');
 const { TypeChecker } = require('fuse-box-typechecker');
 const {
   FuseBox,
@@ -28,6 +29,8 @@ if (!isProduction) {
   testWatch.runWatch('./src/');
 }
 
+dotenv.config();
+
 class Builder {
   constructor(
     config = {
@@ -48,6 +51,8 @@ class Builder {
   }
 
   static getFuseConfig(target, name, output = '$name.js', plugins = []) {
+    const { RECAPTCHA_SITE_KEY } = process.env;
+
     return {
       target,
       homeDir: 'src/',
@@ -57,10 +62,11 @@ class Builder {
       sourceMaps: target !== 'server',
       cache: !isProduction,
       plugins: [
-        JSONPlugin(),
         EnvPlugin({
           NODE_ENV: isProduction ? 'production' : 'development',
+          RECAPTCHA_SITE_KEY: RECAPTCHA_SITE_KEY,
         }),
+        JSONPlugin(),
         isProduction &&
           QuantumPlugin({
             bakeApiIntoBundle: name,

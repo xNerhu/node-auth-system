@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import axios from 'axios';
 
-const SECRET_KEY = '';
+const { RECAPTCHA_SECRET_KEY } = process.env;
 const router = Router();
 
 router.post('/recaptcha', async (req, res) => {
@@ -10,7 +10,7 @@ router.post('/recaptcha', async (req, res) => {
     'https://www.google.com/recaptcha/api/siteverify',
     {
       params: {
-        secret: SECRET_KEY,
+        secret: RECAPTCHA_SECRET_KEY,
         response: token,
       },
     },

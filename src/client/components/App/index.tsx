@@ -1,9 +1,8 @@
 import * as React from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 
-const test = true;
-const SITE_KEY = test ? '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI' : '';
+const { RECAPTCHA_SITE_KEY } = process.env;
 
 class App extends React.Component {
   onChange = async (token: string) => {
@@ -20,7 +19,7 @@ class App extends React.Component {
       <div>
         Hello World!
         <button>aha</button>
-        <ReCAPTCHA sitekey={SITE_KEY} onChange={this.onChange} />
+        <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} onChange={this.onChange} />
       </div>
     );
   }
