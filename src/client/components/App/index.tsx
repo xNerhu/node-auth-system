@@ -4,6 +4,7 @@ import { colors } from '@material-ui/core';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Login from '../Login';
+import Register from '../Register';
 import Home from '../Home';
 
 export default class App extends React.Component {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
       <BrowserRouter>
         <MuiThemeProvider theme={this.theme}>
           <Route path="/login" component={Login} exact />
+          <Route path="/register" component={Register} exact />
           <Route path="/" component={Home} exact />
         </MuiThemeProvider>
       </BrowserRouter>

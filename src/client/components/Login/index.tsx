@@ -28,12 +28,12 @@ export default class Login extends React.Component<{}, State> {
     const { remember } = this.state;
 
     return (
-      <div className="loginform-container">
-        <form className="loginform">
+      <div className="user-form-container">
+        <form className="user-form">
           <Typography variant="h6">Log in</Typography>
-          <FormControl className="loginform-fieldset" component="fieldset">
+          <FormControl className="user-form-fieldset" component="fieldset">
             <TextField
-              className="loginform-textfield"
+              className="user-form-textfield"
               label="Username/Email"
               type="email"
               name="email"
@@ -42,7 +42,7 @@ export default class Login extends React.Component<{}, State> {
               variant="filled"
             />
             <TextField
-              className="loginform-textfield"
+              className="user-form-textfield"
               label="Password"
               type="password"
               name="password"
@@ -51,7 +51,7 @@ export default class Login extends React.Component<{}, State> {
               variant="filled"
             />
             <Link component="button">Forgot password?</Link>
-            <div className="loginform-submit-container">
+            <div className="user-form-submit-container">
               <FormControlLabel
                 value="end"
                 control={
@@ -60,7 +60,7 @@ export default class Login extends React.Component<{}, State> {
                 label="Remember me"
                 labelPlacement="end"
               />
-              <Button className="loginform-submit" color="primary">
+              <Button className="user-form-submit" color="primary">
                 login
               </Button>
             </div>

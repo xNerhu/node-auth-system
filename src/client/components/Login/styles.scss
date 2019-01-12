@@ -1,10 +1,10 @@
-.loginform {
+.user-form-container {
   min-height: fit-content;
 }
 
-.loginform-container {
-  width: 448px;
-  padding: 24px 24px 16px 24px;
+.user-form {
+  width: 384px;
+  padding: 24px 24px 8px 24px;
   border-radius: 4px;
   overflow: hidden;
   background-color: #fff;
@@ -16,21 +16,25 @@
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.loginform-fieldset {
+.user-form-fieldset {
   width: 100%;
 }
 
-.loginform-textfield {
+.user-form-textfield {
   width: 100%;
 }
 
-.loginform-submit-container {
+.user-form-submit-container {
   display: flex;
   align-items: center;
   margin: 12px 0px;
 }
 
-.loginform-submit {
+.user-form-submit {
   height: 36px;
   margin-left: auto !important;
+}
+
+.user-form-control-label {
+  width: 256px;
 }
