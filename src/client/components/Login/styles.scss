@@ -1,0 +1,36 @@
+.loginform {
+  min-height: fit-content;
+}
+
+.loginform-container {
+  width: 448px;
+  padding: 24px 24px 16px 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.loginform-fieldset {
+  width: 100%;
+}
+
+.loginform-textfield {
+  width: 100%;
+}
+
+.loginform-submit-container {
+  display: flex;
+  align-items: center;
+  margin: 12px 0px;
+}
+
+.loginform-submit {
+  height: 36px;
+  margin-left: auto !important;
+}

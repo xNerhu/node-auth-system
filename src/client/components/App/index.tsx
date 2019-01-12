@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { colors } from '@material-ui/core';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Login from '../Login';
@@ -9,7 +10,8 @@ export default class App extends React.Component {
   private theme = createMuiTheme({
     palette: {
       type: 'light',
-      primary: { main: '#ff0000' },
+      primary: { main: colors.indigo['500'] },
+      secondary: { main: colors.amber['500'] },
     },
     typography: {
       useNextVariants: true,
