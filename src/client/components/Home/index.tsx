@@ -1,9 +1,16 @@
 import * as React from 'react';
 
-import { Root } from './styles';
+import User from '../User';
+import { Root, Container } from './styles';
 
 export default class Home extends React.Component {
   render() {
-    return <Root />;
+    return (
+      <Root>
+        <Container>
+          <User />
+        </Container>
+      </Root>
+    );
   }
 }

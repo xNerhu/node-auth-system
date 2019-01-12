@@ -7,12 +7,12 @@ import Home from '../Home';
 export default class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
-        <React.Fragment>
-          <AppBar />
+      <React.Fragment>
+        <AppBar />
+        <BrowserRouter>
           <Route path="/" component={Home} exact />
-        </React.Fragment>
-      </BrowserRouter>
+        </BrowserRouter>
+      </React.Fragment>
     );
   }
 }
