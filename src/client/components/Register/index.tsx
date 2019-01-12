@@ -9,6 +9,7 @@ import {
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { TextFieldProps } from '@material-ui/core/TextField';
 
 const { RECAPTCHA_SITE_KEY } = process.env;
 
@@ -28,67 +29,41 @@ export default class Register extends React.Component<{}, State> {
   render() {
     const { remember } = this.state;
 
+    const inputProps: TextFieldProps = {
+      className: 'userform-textfield',
+      margin: 'normal',
+      variant: 'filled',
+    };
+
     return (
-      <div className="user-form-container">
-        <form className="user-form" style={{ width: 512 }}>
+      <div className="userform-container">
+        <form className="userform" style={{ width: 512 }}>
           <Typography variant="h6">Register</Typography>
-          <FormControl className="user-form-fieldset" component="fieldset">
+          <FormControl className="userform-fieldset" component="fieldset">
             <Grid spacing={32} container>
               <Grid item xs>
-                <TextField
-                  className="user-form-textfield"
-                  label="First name"
-                  margin="normal"
-                  variant="filled"
-                />
+                <TextField label="First name" {...inputProps} />
               </Grid>
               <Grid item xs>
-                <TextField
-                  className="user-form-textfield"
-                  label="Last name"
-                  margin="normal"
-                  variant="filled"
-                />
+                <TextField label="Last name" {...inputProps} />
               </Grid>
             </Grid>
+            <TextField label="Username" name="username" {...inputProps} />
+            <TextField label="Email" name="email" {...inputProps} />
+            <TextField label="Password" type="password" {...inputProps} />
             <TextField
-              className="user-form-textfield"
-              label="Username"
-              name="username"
-              margin="normal"
-              variant="filled"
-            />
-            <TextField
-              className="user-form-textfield"
-              label="Email"
-              name="email"
-              margin="normal"
-              variant="filled"
-            />
-            <TextField
-              className="user-form-textfield"
-              label="Password"
-              type="password"
-              name="password"
-              autoComplete="password"
-              margin="normal"
-              variant="filled"
-            />
-            <TextField
-              className="user-form-textfield"
               label="Confirm password"
               type="password"
-              name="password"
-              autoComplete="password"
-              margin="normal"
-              variant="filled"
+              {...inputProps}
+              style={{ marginBottom: 32 }}
             />
+            <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} />
             <div
-              className="user-form-submit-container"
+              className="userform-submit-container"
               style={{ marginTop: 24 }}
             >
               <FormControlLabel
-                className="user-form-control-label"
+                className="userform-control-label"
                 value="end"
                 control={
                   <Checkbox checked={remember} onChange={this.onCheckbox} />
@@ -96,7 +71,7 @@ export default class Register extends React.Component<{}, State> {
                 label="I have accepted the Terms of Use & Privacy Policy"
                 labelPlacement="end"
               />
-              <Button className="user-form-submit" color="primary">
+              <Button className="userform-submit" color="primary">
                 register
               </Button>
             </div>

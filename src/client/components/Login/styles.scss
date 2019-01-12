@@ -1,8 +1,8 @@
-.user-form-container {
+.userform-container {
   min-height: fit-content;
 }
 
-.user-form {
+.userform {
   width: 384px;
   padding: 24px 24px 8px 24px;
   border-radius: 4px;
@@ -16,25 +16,25 @@
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.user-form-fieldset {
+.userform-fieldset {
   width: 100%;
 }
 
-.user-form-textfield {
+.userform-textfield {
   width: 100%;
 }
 
-.user-form-submit-container {
+.userform-submit-container {
   display: flex;
   align-items: center;
   margin: 12px 0px;
 }
 
-.user-form-submit {
+.userform-submit {
   height: 36px;
   margin-left: auto !important;
 }
 
-.user-form-control-label {
+.userform-control-label {
   width: 256px;
 }

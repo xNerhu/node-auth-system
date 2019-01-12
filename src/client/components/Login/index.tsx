@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import { TextFieldProps } from '@material-ui/core/TextField';
 
 import './styles.scss';
 
@@ -27,31 +28,33 @@ export default class Login extends React.Component<{}, State> {
   render() {
     const { remember } = this.state;
 
+    const inputProps: TextFieldProps = {
+      className: 'userform-textfield',
+      margin: 'normal',
+      variant: 'filled',
+    };
+
     return (
-      <div className="user-form-container">
-        <form className="user-form">
+      <div className="userform-container">
+        <form className="userform">
           <Typography variant="h6">Log in</Typography>
-          <FormControl className="user-form-fieldset" component="fieldset">
+          <FormControl className="userform-fieldset" component="fieldset">
             <TextField
-              className="user-form-textfield"
               label="Username/Email"
               type="email"
               name="email"
               autoComplete="email"
-              margin="normal"
-              variant="filled"
+              {...inputProps}
             />
             <TextField
-              className="user-form-textfield"
               label="Password"
               type="password"
               name="password"
               autoComplete="password"
-              margin="normal"
-              variant="filled"
+              {...inputProps}
             />
             <Link component="button">Forgot password?</Link>
-            <div className="user-form-submit-container">
+            <div className="userform-submit-container">
               <FormControlLabel
                 value="end"
                 control={
@@ -60,7 +63,7 @@ export default class Login extends React.Component<{}, State> {
                 label="Remember me"
                 labelPlacement="end"
               />
-              <Button className="user-form-submit" color="primary">
+              <Button className="userform-submit" color="primary">
                 login
               </Button>
             </div>
