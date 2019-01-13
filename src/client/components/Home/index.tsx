@@ -1,6 +1,7 @@
 import * as React from 'react';
-
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+
+import { wrapLink } from '@client/utils';
 import UserCard from '../UserCard';
 import './styles.scss';
 
@@ -17,8 +18,12 @@ export default class Home extends React.Component {
             >
               Discover new people
             </Typography>
-            <Button color="inherit">sign up</Button>
-            <Button color="inherit">log in</Button>
+            <Button color="inherit" component={wrapLink('/register')}>
+              sign up
+            </Button>
+            <Button color="inherit" component={wrapLink('/login')}>
+              log in
+            </Button>
           </Toolbar>
         </AppBar>
         <div className="home-container">

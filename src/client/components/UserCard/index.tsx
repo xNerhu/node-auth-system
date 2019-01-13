@@ -7,12 +7,13 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import { wrapLink } from '@client/utils';
 import './styles.scss';
 
 export default class UserCard extends React.Component {
   render() {
     return (
-      <Card className="usercard">
+      <Card className="usercard" component={wrapLink('/profile')}>
         <CardActionArea>
           <CardMedia
             className="usercard-media"
