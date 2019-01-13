@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 
 import './styles.scss';
 
-export default class Bar extends React.Component {
+export interface Props {
+  title: string;
+}
+
+export default class Bar extends React.Component<Props> {
   render() {
+    const { title, children } = this.props;
+
     return (
       <AppBar className="appbar" position="relative" color="inherit">
         <Toolbar>
@@ -14,10 +19,9 @@ export default class Bar extends React.Component {
             variant="h6"
             color="inherit"
           >
-            Photos
+            {title}
           </Typography>
-          <Button>login</Button>
-          <Button>sign up</Button>
+          {children}
         </Toolbar>
       </AppBar>
     );
