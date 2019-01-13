@@ -140,7 +140,10 @@ Sparky.task('client', async () => {
     },
     plugins: [
       [
-        SassPlugin(),
+        SassPlugin({
+          importer: true,
+          macros: { $mixins: 'src/client/mixins' },
+        }),
         CSSResourcePlugin({
           dist: `build/public/assets`,
           resolve: f => `/assets/${f}`,

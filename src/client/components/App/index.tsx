@@ -3,9 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { colors } from '@material-ui/core';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import Login from '../Login';
-import Register from '../Register';
-import Profile from '../Profile';
 import Home from '../Home';
 
 export default class App extends React.Component {
@@ -24,9 +21,6 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <MuiThemeProvider theme={this.theme}>
-          <Route path="/login" component={Login} exact />
-          <Route path="/register" component={Register} exact />
-          <Route path="/profile" component={Profile} />
           <Route path="/" component={Home} exact />
         </MuiThemeProvider>
       </BrowserRouter>

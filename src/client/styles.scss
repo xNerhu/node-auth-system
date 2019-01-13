@@ -1,3 +1,12 @@
+@import './components/AppBar/styles.scss';
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./assets/fonts/roboto-light.woff2') format('woff2');
+}
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;

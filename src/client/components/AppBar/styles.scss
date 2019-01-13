@@ -1,9 +1,16 @@
 .appbar {
   flex-grow: 1;
-  background-color: #fff;
-  color: rgba(0, 0, 0, 0.87);
 }
 
 .appbar-typography {
   flex-grow: 1;
+}
+
+.appbar-arrow-icon {
+  width: 24px;
+  height: 24px;
+  background-size: 24px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(assets/icons/arrow.svg);
 }
