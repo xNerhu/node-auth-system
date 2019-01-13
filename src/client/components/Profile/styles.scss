@@ -1,0 +1,41 @@
+@import '$mixins/images.scss';
+
+.profile-appbar {
+  padding-bottom: 32px;
+}
+
+.profile-presentation {
+  margin-top: -24px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-presentation-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid #fff;
+  background-image: url(https://avatars3.githubusercontent.com/u/12050791?s=460&v=4);
+  @include image-center(100%, auto);
+}
+
+.profile-presentation-fullname {
+  margin-top: 16px !important;
+  font-weight: 300 !important;
+}
+
+.profile-description {
+  width: 100vw;
+  max-width: 768px;
+  padding: 24px;
+  margin: 48px auto;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
