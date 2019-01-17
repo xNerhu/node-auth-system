@@ -16,7 +16,7 @@ export default class Home extends React.Component {
               variant="h6"
               color="inherit"
             >
-              Discover new people
+              Users
             </Typography>
             <Button color="inherit" component={wrapLink('/register')}>
               sign up
