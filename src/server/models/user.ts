@@ -5,8 +5,6 @@ import { IUser } from '@server/interfaces';
 const Schema = mongoose.Schema;
 
 const User = new Schema({
-  firstName: String,
-  lastName: String,
   username: String,
   email: String,
   emailVerified: Boolean,

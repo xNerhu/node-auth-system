@@ -3,8 +3,6 @@ import { gql } from 'apollo-server-express';
 export default gql`
   type User {
     id: ID
-    firstName: String
-    lastName: String
     username: String
     email: String
     description: String
@@ -17,6 +15,11 @@ export default gql`
   }
 
   type Mutation {
-    test(text: String!): String!
+    register(
+      username: String!
+      email: String!
+      password: String!
+      description: String
+    ): String!
   }
 `;
