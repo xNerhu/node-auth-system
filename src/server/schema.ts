@@ -2,11 +2,12 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   type User {
-    id: ID
-    username: String
-    email: String
+    _id: ID!
+    username: String!
+    email: String!
+    emailVerified: Boolean!
     description: String
-    createdAt: String
+    createdAt: String!
   }
 
   type Query {
@@ -20,6 +21,6 @@ export default gql`
       email: String!
       password: String!
       description: String
-    ): String!
+    ): User!
   }
 `;
