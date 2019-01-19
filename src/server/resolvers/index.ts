@@ -1,9 +1,12 @@
 import hello from './hello';
-import test from './test';
 
 export default {
   Query: {
     hello,
-    test,
+  },
+  Mutation: {
+    test: (_, { text }, context) => {
+      return text;
+    },
   },
 };

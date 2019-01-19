@@ -22,7 +22,7 @@ const testWatch = TypeChecker({
   basePath: './',
   yellowOnLint: true,
   shortenFilenames: true,
-  skipTsErrors: [2307],
+  skipTsErrors: [2307, 7006],
 });
 
 if (!isProduction) {

@@ -5,4 +5,8 @@ export default gql`
     hello: String!
     test: [Int!]!
   }
+
+  type Mutation {
+    test(text: String!): String!
+  }
 `;
