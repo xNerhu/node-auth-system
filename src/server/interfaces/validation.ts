@@ -1,5 +1,4 @@
 export interface IValidationItem {
   message: string;
-  test: () => any;
-  errorType?: any;
+  test: (() => boolean | Promise<boolean>) | boolean;
 }
