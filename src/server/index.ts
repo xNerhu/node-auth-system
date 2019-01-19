@@ -2,27 +2,25 @@ import * as helmet from 'helmet';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as dotenv from 'dotenv';
-import { ApolloServer } from 'apollo-server-express';
-import { resolve } from 'path';
+import * as mongoose from 'mongoose';
 
-import typeDefs from './types';
-import resolvers from './resolvers';
+import controllers from './controllers';
+import { applyApollo } from './graphql';
 
 dotenv.config();
 
+const { EXPRESS_PORT, MONGO_URL } = process.env;
 const app = express();
-const PORT = process.env.EXPRESS_PORT;
-const server = new ApolloServer({ typeDefs, resolvers });
-server.applyMiddleware({ app, path: '/api' });
+
+applyApollo(app);
 
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(resolve('./build/public')));
-app.get('*', (req, res) => {
-  return res.sendFile('index.html', { root: 'build/public' });
-});
+app.use(controllers);
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}!`);
+mongoose.connect(MONGO_URL);
+
+app.listen(EXPRESS_PORT, () => {
+  console.log(`Listening on port ${EXPRESS_PORT}!`);
 });

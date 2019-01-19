@@ -1,8 +1,9 @@
-import hello from './hello';
+import { getUsers } from './users';
 
 export default {
   Query: {
-    hello,
+    users: getUsers,
+    me: () => 'aha',
   },
   Mutation: {
     test: (_, { text }, context) => {
