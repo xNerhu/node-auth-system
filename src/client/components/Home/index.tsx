@@ -9,7 +9,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <AppBar className="appbar" position="relative">
+        <AppBar className="appbar" position="relative" color="inherit">
           <Toolbar>
             <Typography
               className="appbar-typography"
