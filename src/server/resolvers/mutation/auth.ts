@@ -4,6 +4,7 @@ import { hash } from 'bcrypt';
 
 import { UserModel } from '@server/models';
 import { IUser } from '@server/interfaces';
+import { validate } from '@server/utils';
 
 interface IArgs {
   username: string;
