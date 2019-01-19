@@ -1,4 +1,5 @@
 @import '$mixins/images.scss';
+@import '$mixins/shadows.scss';
 
 .profile-background-image {
   width: 100%;
@@ -11,14 +12,13 @@
   width: 164px;
   height: 164px;
   border-radius: 100%;
-  margin-top: -82px;
+  margin-top: calc(-164px / 2);
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   border: 4px solid #fff;
   background-image: url(https://avatars3.githubusercontent.com/u/12050791?s=460&v=4);
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  @include shadow(4);
   @include image-center(100%, auto);
 }
 
@@ -36,6 +36,5 @@
   background-color: #fff;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
-    0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  @include shadow(4);
 }
