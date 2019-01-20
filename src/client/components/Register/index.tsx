@@ -13,77 +13,58 @@ import {
 const { Link } = require('@material-ui/core');
 import { TextFieldProps } from '@material-ui/core/TextField';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { isEmail } from 'validator';
 
-import { validate } from '@shared/utils';
-import { IValidationErrors } from '@shared/interfaces';
+import Form from '@shared/models/form';
+import { IFormErrors } from '@shared/interfaces';
+import { registerSchema } from '@shared/validation';
 import './styles.scss';
 
-const { RECAPTCHA_SITE_KEY } = process.env;
+const { RECAPTCHA_SITE_KEY, NODE_ENV } = process.env;
+const isProduction = NODE_ENV === 'production';
 
 interface IState {
   showPassword: boolean;
-  errors: IValidationErrors;
+  privacyPolicyAccepted: boolean;
+  recaptchaChecked: boolean;
+  errors: IFormErrors;
 }
 
 export default class Register extends React.Component<{}, IState> {
   public state: IState = {
     showPassword: false,
+    privacyPolicyAccepted: false,
+    recaptchaChecked: false,
     errors: {},
   };
 
-  private inputs: { [i: string]: HTMLInputElement } = {};
+  private form = new Form(registerSchema);
 
   togglePassword = () => {
     const { showPassword } = this.state;
     this.setState({ showPassword: !showPassword });
   };
 
-  onSubmit = async () => {
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-    } = this.inputs;
-
-    const errors = await validate({
-      firstName: {
-        message: 'Enter first name',
-        test: firstName.value.trim().length > 0,
-      },
-      lastName: {
-        message: 'Enter last name',
-        test: lastName.value.trim().length > 0,
-      },
-      email: {
-        message: 'Enter email',
-        test: isEmail(email.value),
-      },
-      password: [
-        {
-          message: 'Enter a password',
-          test: password.value.trim().length > 0,
-        },
-        {
-          message: 'Use at min 6 characters long',
-          test: password.value.trim().length >= 6,
-        },
-      ],
-      confirmPassword: {
-        message: 'Confirm password',
-        test:
-          password.value.trim().length < 6 ||
-          password.value.trim() === confirmPassword.value.trim(),
-      },
-    });
-
+  onSubmit = () => {
+    const errors = this.form.validate();
+    console.log(errors);
     this.setState({ errors });
   };
 
+  onCheckboxChange = (e: any, checked: boolean) => {
+    this.setState({ privacyPolicyAccepted: checked });
+  };
+
+  onRecatpchaChange = (token: string) => {
+    this.setState({ recaptchaChecked: true });
+  };
+
   render() {
-    const { showPassword, errors } = this.state;
+    const {
+      showPassword,
+      privacyPolicyAccepted,
+      recaptchaChecked,
+      errors,
+    } = this.state;
 
     const inputProps: TextFieldProps = {
       type: 'text',
@@ -95,6 +76,9 @@ export default class Register extends React.Component<{}, IState> {
     const passwordInputProps = Object.assign({}, inputProps, {
       type: showPassword ? 'text' : 'password',
     });
+
+    const submitDisabled =
+      isProduction && (!privacyPolicyAccepted || !recaptchaChecked);
 
     return (
       <div className="form-container">
@@ -110,7 +94,7 @@ export default class Register extends React.Component<{}, IState> {
                   name="firstname"
                   error={!!errors.firstName}
                   helperText={errors.firstName}
-                  inputRef={r => (this.inputs.firstName = r)}
+                  inputRef={this.form.bind('firstName')}
                   {...inputProps}
                 />
               </Grid>
@@ -120,7 +104,7 @@ export default class Register extends React.Component<{}, IState> {
                   name="lastname"
                   error={!!errors.lastName}
                   helperText={errors.lastName}
-                  inputRef={r => (this.inputs.lastName = r)}
+                  inputRef={this.form.bind('lastName')}
                   {...inputProps}
                 />
               </Grid>
@@ -131,7 +115,7 @@ export default class Register extends React.Component<{}, IState> {
               name="email"
               error={!!errors.email}
               helperText={errors.email}
-              inputRef={r => (this.inputs.email = r)}
+              inputRef={this.form.bind('email')}
               {...inputProps}
             />
             <Grid spacing={32} container>
@@ -140,7 +124,7 @@ export default class Register extends React.Component<{}, IState> {
                   label="Password"
                   error={!!errors.password}
                   helperText={errors.password}
-                  inputRef={r => (this.inputs.password = r)}
+                  inputRef={this.form.bind('password')}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment variant="filled" position="end">
@@ -165,18 +149,22 @@ export default class Register extends React.Component<{}, IState> {
                   label="Confirm password"
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword}
-                  inputRef={r => (this.inputs.confirmPassword = r)}
+                  inputRef={this.form.bind('confirmPassword')}
                   {...passwordInputProps}
                 />
               </Grid>
             </Grid>
-            {false && (
+            {isProduction && (
               <div className="form-recaptcha-container">
-                <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} />
+                <ReCAPTCHA
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  onChange={this.onRecatpchaChange}
+                />
               </div>
             )}
             <FormControlLabel
-              control={<Checkbox value="checkedH" />}
+              className="form-checkbox-container"
+              control={<Checkbox onChange={this.onCheckboxChange} />}
               label={
                 <span>
                   I have accepted&nbsp;
@@ -192,6 +180,7 @@ export default class Register extends React.Component<{}, IState> {
                 variant="contained"
                 color="primary"
                 onClick={this.onSubmit}
+                disabled={submitDisabled}
               >
                 next
               </Button>
