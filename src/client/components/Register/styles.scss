@@ -1,0 +1,65 @@
+@import '$mixins/images.scss';
+@import '$mixins/shadows.scss';
+
+.form-container {
+  height: 100vh;
+  min-height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 512px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 24px;
+  @include shadow(4);
+}
+
+.form-fieldset {
+  width: 100%;
+  margin-top: 8px !important;
+}
+
+.form-textfield {
+  width: 100%;
+}
+
+.form-visibility-button {
+  height: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 0px !important;
+  margin-right: 20px !important;
+}
+
+.form-visibility-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.54;
+  background-image: url(../../assets/icons/visibility.svg);
+  @include image-center(24px, auto);
+
+  &.off {
+    background-image: url(../../assets/icons/visibility-off.svg);
+  }
+}
+
+.form-recaptcha-container {
+  margin-top: 16px;
+}
+
+.form-buttons-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}

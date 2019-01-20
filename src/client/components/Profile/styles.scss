@@ -3,7 +3,7 @@
 
 .profile-background-image {
   width: 100%;
-  height: 320px;
+  height: 288px;
   background-image: url(https://scontent.fktw1-1.fna.fbcdn.net/v/t1.0-9/37208290_847263215459654_1170917181353885696_n.jpg?_nc_cat=105&_nc_ht=scontent.fktw1-1.fna&oh=45d39eef2111bd42c1cdc588349986b2&oe=5CD0E035);
   @include image-cover;
 }
@@ -13,8 +13,6 @@
   height: 164px;
   border-radius: 100%;
   margin-top: calc(-164px / 2);
-  margin-left: auto;
-  margin-right: auto;
   overflow: hidden;
   border: 4px solid #fff;
   background-image: url(https://avatars3.githubusercontent.com/u/12050791?s=460&v=4);
@@ -22,19 +20,26 @@
   @include image-center(100%, auto);
 }
 
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+}
+
 .profile-username {
+  text-align: center;
   margin-top: 12px !important;
   font-weight: 500 !important;
-  text-align: center;
 }
 
 .profile-description {
-  width: 100vw;
+  width: 100%;
   max-width: 768px;
   padding: 24px;
-  margin: 48px auto;
-  background-color: #fff;
-  border-radius: 4px;
+  margin-top: 48px;
   overflow: hidden;
+  border-radius: 4px;
+  background-color: #fff;
   @include shadow(4);
 }
