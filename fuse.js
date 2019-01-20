@@ -26,7 +26,7 @@ const testWatch = TypeChecker({
 });
 
 if (!isProduction) {
-  testWatch.runWatch('./src/');
+  // testWatch.runWatch('./src/');
 }
 
 dotenv.config();
@@ -125,7 +125,7 @@ Sparky.task('server', async () => {
     target: 'server',
     instructions: '> [server/index.ts] +shared/**',
     runWhenCompleted: true,
-    watch: 'server/**',
+    watchFilter: path => !path.match('.*.client'),
   }).init();
 });
 
@@ -133,7 +133,7 @@ Sparky.task('client', async () => {
   await new Builder({
     name: 'client',
     instructions: '> client/index.tsx +shared/**',
-    watch: 'client/**',
+    watchFilter: path => !path.match('.*.server'),
     output: join('public', '$name.js'),
     devServerOptions: {
       fallback: 'index.html',
