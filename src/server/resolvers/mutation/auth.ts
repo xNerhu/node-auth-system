@@ -7,15 +7,20 @@ import { IUser } from '@server/interfaces';
 import { validate } from '@server/utils';
 
 interface IArgs {
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   description: string;
 }
 
 export default {
-  async register(parent, { username, email, password, description }: IArgs) {
-    username = username.trim();
+  async register(
+    parent,
+    { firstName, lastName, email, password, description }: IArgs,
+  ) {
+    firstName = firstName.trim();
+    lastName = lastName.trim();
     password = password.trim();
     email = email.trim().toLowerCase();
     if (description) description = description.trim();
@@ -23,7 +28,7 @@ export default {
     const errors = await validate([
       {
         message: 'Username must be at minimum 4 characters long.',
-        test: username.length >= 4,
+        test: firstName.length >= 4,
       },
       {
         message: 'Incorrect email.',
@@ -49,7 +54,8 @@ export default {
 
     const hashedPassword = await hash(password, 1);
     const data = <IUser>{
-      username,
+      firstName,
+      lastName,
       email,
       emailVerified: false,
       password: hashedPassword,
