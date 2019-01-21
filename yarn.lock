@@ -246,6 +246,13 @@
   version "10.12.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
 
+"@types/nodemailer@4.6.5":
+  version "4.6.5"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-4.6.5.tgz#8bb799202f8cfcc8200a1c1627f6a8a74fe71da6"
+  dependencies:
+    "@types/events" "*"
+    "@types/node" "*"
+
 "@types/passport-local@1.0.33":
   version "1.0.33"
   resolved "https://registry.yarnpkg.com/@types/passport-local/-/passport-local-1.0.33.tgz#d245b60c5b801cb3aeca1ffab557d5fe1534260d"
@@ -2996,6 +3003,10 @@ node-sass@4.11.0:
     sass-graph "^2.2.4"
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
+
+nodemailer@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-5.1.1.tgz#0c48d1ecab02e86d9ff6c620ee75ed944b763505"
 
 "nopt@2 || 3":
   version "3.0.6"
